@@ -25,9 +25,10 @@
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
 
-<body>
-
+<body ng-controller="AppController">
+    <div ng-include="'tpl/header.html'"></div>
     <div ui-view> </div>
+    <div ng-include="'tpl/footer.html'"></div>
     <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->	
 	<script src="./assets/pages/scripts/jquery.js"></script>
 	<script src="./assets/pages/scripts/bootstrap.min.js"></script>
@@ -59,9 +60,11 @@
   
     
     <!--<script src="js/js.js"></script>-->
-
+    
 	<!--APP-->
 	<script src="js/js.js"></script>
 	<script src="js/main.js"></script>
+    <!--ANGULARAPP-->
+    <script src="./js/services/categoryService.js"></script>
 </body>
 </html>
