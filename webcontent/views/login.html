@@ -7,14 +7,14 @@
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
 						<h2>Login to your account</h2>
-						<form action="#">
-							<input type="text" placeholder="Name" />
-							<input type="email" placeholder="Email Address" />
+						<form  ng-submit="acceder()">
+							<input type="email" placeholder="Email Address" ng-model="email" />
+							<input type="password" placeholder="Password" ng-model="clave"/>
 							<span>
 								<input type="checkbox" class="checkbox"> 
 								Keep me signed in
 							</span>
-							<button type="submit" class="btn btn-default">Login</button>
+							<button type="submit" ng-click="mostrarAdmin()"  class="btn btn-default">Login</button>
 						</form>
 					</div><!--/login form-->
 				</div>

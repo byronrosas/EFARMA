@@ -61,7 +61,8 @@ EfarmaApp
 			})
 			.state('login',{
 				url:"/login.html",
-				templateUrl:"views/login.html"
+				templateUrl:"views/login.html",
+				controller:"LoginController"
 			});
 		}])
 
@@ -70,7 +71,11 @@ EfarmaApp.controller('AppController', [ '$scope', '$rootScope',
 		'$httpBackend','$sessionStorage','CategoryService', function($scope, $rootScope, $httpBackend,$sessionStorage,CategoryService) {
 			$scope.session=$sessionStorage;
 			$scope.root = $scope;
-			
+			$scope.ver=false;
+			$scope.mostrarAdmin=function()
+			{
+				$scope.ver=true;
+			}
 			angular.module('ngMockE2E');
 			$httpBackend.whenGET(function(url) {
 				return (url.indexOf('views') !== -1);
@@ -92,7 +97,37 @@ EfarmaApp.controller('AppController', [ '$scope', '$rootScope',
 			$scope.$on('$viewContentLoaded', function() {				
 			});
 		} ]);
+/* Setup App Main Controller Admin*/
+EfarmaApp.controller('AppAdminController', [ '$scope', '$rootScope',
+		'$httpBackend','$sessionStorage','CategoryService', function($scope, $rootScope, $httpBackend,$sessionStorage,CategoryService) {
+			$scope.session=$sessionStorage;
+			$scope.root = $scope;
+			$scope.ver=false;
+			$scope.mostrarAdmin=function()
+			{
+				$scope.ver=true;
+			}
+			angular.module('ngMockE2E');
+			$httpBackend.whenGET(function(url) {
+				return (url.indexOf('views') !== -1);
+			}).passThrough();
+			$httpBackend.whenPOST(function(url) {
+				return (url.indexOf('ip-api.com') !== -1);
+			}).passThrough();
 
+			$httpBackend.whenGET(function(url) {
+				return (url.indexOf('tpl/') !== -1);
+			}).passThrough();
+
+
+			CategoryService.getCategory().then(function(sidebarCategorias){
+					console.log(JSON.stringify(sidebarCategorias.data));
+					//Editar
+					$scope.session.sidebarCategorias=sidebarCategorias.data;
+				});
+			$scope.$on('$viewContentLoaded', function() {				
+			});
+		} ]);
 
 
 /* Init global settings and run the app */

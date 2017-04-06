@@ -1,28 +1,28 @@
 angular
 		.module('EfarmaApp')
-		.constant('BASE_URL', configuracion.host)
+		// .constant('BASE_URL', configuracion.host)
 		.factory(
 				'DatosUsuarioService',
 				[
-						'BASE_URL',
+						// 'BASE_URL',
 						'$http',
 						'$httpBackend',
 						'$location',
 						'$window',
-						function(BASE_URL, $http, $httpBackend, $location,
+						function($http, $httpBackend, $location,
 								$window, ngProgressFactory) {
 							'use strict';
 							try {
 								angular.module('ngMockE2E');
 								$httpBackend
 										.whenPOST(
-												BASE_URL
-														+ '/rest/users/login')
+												
+														'/rest/users/login')
 										.respond(
 												200,
-                                                [
-												 {
-													"usuario" : {
+                                                
+												 
+													 {
                                                         "nombre":"darwin",
                                                         "direccion":"el recreo",
                                                         "telefono":"793399",
@@ -55,17 +55,12 @@ angular
                                                         }],
                                                         "rol":[
                                                             {
-                                                            "nombre" : "usuario",
+                                                            "nombre" : "admin",
 															"importancia" : 3
-                                                             },
-                                                             {
-                                                                 "nombre":"capo",
-                                                                 "importancia":1
                                                              }
                                                         ]
-													}		
-												}
-                                            ]);
+													}														
+                                            );
 
 							} catch (err) {
 								console.log("Error " + err);
@@ -79,7 +74,7 @@ angular
 									};
                                     var req = {
                                         method: 'POST',
-                                        url: BASE_URL + '/rest/data/login',
+                                        url:'/rest/users/login',
                                         data:dataObj,
                                         headers: {
                                             'Content-Type': 'text/plain'

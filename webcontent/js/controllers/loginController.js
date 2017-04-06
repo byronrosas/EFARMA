@@ -1,6 +1,6 @@
-EfarmaApp.controller('LoginController', ['$rootScope', '$scope', 'settings', '$log', '$sessionStorage',
+EfarmaApp.controller('LoginController', ['$window','$rootScope', '$scope', 'settings', '$log', '$sessionStorage',
 				'$localStorage', 'DatosUsuarioService', '$state',
-    function ($rootScope, $scope, settings, $log, $sessionStorage, $localStorage,DatosUsuarioService,$state) {
+    function ($window,$rootScope, $scope, settings, $log, $sessionStorage, $localStorage,DatosUsuarioService,$state) {
         $scope.session = $sessionStorage;
         $scope.local = $localStorage;
         $scope.$log = $log;  
@@ -11,15 +11,15 @@ EfarmaApp.controller('LoginController', ['$rootScope', '$scope', 'settings', '$l
         //     }
         // });
 
-        $scope.acceder=function(){
+        $scope.acceder=function(){            
             DatosUsuarioService.login($scope.email, $scope.clave).then(function(usuario){
                 $sessionStorage.login=usuario.data;  
-                if($sessionStorage.login.roles[0].nombre == 'admin')
-                	$state.go('menu.crea');
-                else if($sessionStorage.login.roles[0].nombre == 'gestor')
-                	$state.go('menu.gestorInicio');
-                else if($sessionStorage.login.roles[0].nombre == 'cliente')
-                	$state.go('menu.inicio');              
+                if($sessionStorage.login.rol[0].nombre == 'admin')
+                	$window.location.href = 'views/admin.html'
+                else if($sessionStorage.login.rol[0].nombre == 'gestor')
+                	$state.go('gestor');
+                else if($sessionStorage.login.rol[0].nombre == 'cliente')
+                	$state.go('cliente');              
             }).catch(function(data){
 
             });

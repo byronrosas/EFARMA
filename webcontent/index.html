@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="EfarmaApp">
+<html lang="en" data-ng-app="EfarmaApp" >
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +13,7 @@
     <link href="css/animate.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/responsive.css" rel="stylesheet">
+ 
 	<link id="ng_load_plugins_before" />
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -26,9 +27,9 @@
 </head><!--/head-->
 
 <body ng-controller="AppController">
-    <div ng-include="'tpl/header.html'"></div>
+    <div ng-include="'tpl/header.html'" ></div>
     <div ui-view> </div>
-    <div ng-include="'tpl/footer.html'"></div>
+    <div ng-include="'tpl/footer.html'" ></div>
     <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->	
 	<script src="./assets/pages/scripts/jquery.js"></script>
 	<script src="./assets/pages/scripts/bootstrap.min.js"></script>
@@ -66,5 +67,8 @@
 	<script src="js/main.js"></script>
     <!--ANGULARAPP-->
     <script src="./js/services/categoryService.js"></script>
+    <script src="./js/services/datosUsuariosService.js"></script>
+    <script src="./js/controllers/loginController.js"></script>
+
 </body>
 </html>
