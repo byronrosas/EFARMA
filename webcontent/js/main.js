@@ -1,4 +1,4 @@
-var dependencias = [ 'ngStorage','ui.router'];
+var dependencias = [ 'ngStorage','ui.router','oitozero.ngSweetAlert'];
 dependencias.push('ngMockE2E');
 var EfarmaApp = angular.module("EfarmaApp", dependencias);
 
@@ -45,7 +45,8 @@ EfarmaApp
 			})
 			.state('shop',{
 				url:"/shop.html",
-				templateUrl:"views/shop.html"
+				templateUrl:"views/shop.html",
+				controller:"controllerShop"
 			})
 			.state('detalleProductos',{
 				url:"/detalleProductos.html",
